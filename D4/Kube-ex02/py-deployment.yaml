@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: python-deploy
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: python
+  template:
+    metadata:
+      labels:
+        app: python
+    spec:
+      containers:
+        - name: front-end
+          image: vishwacloudlab/pythonapp:v4-var
+          ports:
+            - containerPort: 8000
