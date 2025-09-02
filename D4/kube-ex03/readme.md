@@ -25,7 +25,7 @@ data:
 Apply it:
 
 ```sh
-kubectl apply -f nginx-env-config.yaml
+kubectl apply -f *.yaml
 ```
 
 ---
@@ -69,7 +69,7 @@ spec:
 Apply it:
 
 ```sh
-kubectl apply -f nginx-env-deploy.yaml
+kubectl apply -f *.yaml
 ```
 
 ---
@@ -99,7 +99,7 @@ data:
 Apply the change:
 
 ```sh
-kubectl apply -f nginx-env-config.yaml
+kubectl apply -f *.yaml
 ```
 
 ---
