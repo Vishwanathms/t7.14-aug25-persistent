@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx-env-demo
+  labels:
+    app: nginx-env-demo
+spec:
+  containers:
+    - name: nginx
+      image: vishwacloudlab/nginx-env-demo:latest
+      ports:
+        - containerPort: 80
+      env:
+        - name: WELCOME_MSG
+          value: "Hello  Kubernetes NGINX!"
+        - name: ENV
+          value: "Prod"

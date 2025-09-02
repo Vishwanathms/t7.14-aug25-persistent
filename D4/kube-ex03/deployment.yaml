@@ -1,0 +1,31 @@
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-env-demo
+  labels:
+    app: nginx-env-demo
+spec:
+  replicas: 3
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 1
+      maxSurge: 1
+  selector:
+    matchLabels:
+      app: nginx-env-demo
+  template:
+    metadata:
+      labels:
+        app: nginx-env-demo
+    spec:
+      containers:
+        - name: nginx
+          image: vishwacloudlab/nginx-env-demo:latest
+          ports:
+            - containerPort: 80
+          envFrom:
+            - configMapRef:
+                name: nginx-env-config

@@ -1,0 +1,8 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: nginx-env-config
+data:
+  WELCOME_MSG: "Hello Kubernetes NGINX!"
+  ENV: "stagging"
