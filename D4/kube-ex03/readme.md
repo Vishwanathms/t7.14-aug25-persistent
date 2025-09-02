@@ -25,7 +25,7 @@ data:
 Apply it:
 
 ```sh
-kubectl apply -f *.yaml
+kubectl apply -f .
 ```
 
 ---
@@ -69,7 +69,7 @@ spec:
 Apply it:
 
 ```sh
-kubectl apply -f *.yaml
+kubectl apply -f .
 ```
 
 ---
@@ -99,7 +99,7 @@ data:
 Apply the change:
 
 ```sh
-kubectl apply -f *.yaml
+kubectl apply -f .
 ```
 
 ---
