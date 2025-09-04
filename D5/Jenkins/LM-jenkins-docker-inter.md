@@ -83,10 +83,16 @@ pipeline {
         stage('Checkout Code') {
             steps {
                 git branch: 'main',
-                    url: 'https://github.com/your-username/jenkins-docker-lab.git', credentialsId: 'your-jenkins-credential-id-for-github   '
+                    url: 'https://github.com/your-username/jenkins-docker-lab.git', credentialsId: 'your-jenkins-credential-id-for-github'
             }
         }
-
+        stage('Build Docker Image') {
+            steps {
+                script {
+                    sh 'docker rm  jenkins_app -f'
+                    sh 'docker image rmi $DOCKERHUB_USER/$IMAGE_NAME:latest'
+                }
+            }              
         stage('Build Docker Image') {
             steps {
                 script {
