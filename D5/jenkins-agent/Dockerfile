@@ -57,6 +57,10 @@ RUN groupadd -g 999 docker && \
 
 USER jenkins
 WORKDIR /home/jenkins
+# -----------------------------
+# Default command (override in Jenkins agent config)
+# -----------------------------
+CMD ["ping", "localhost"]
 
 # -----------------------------
 # Entrypoint: download agent.jar & connect
@@ -67,7 +71,4 @@ ENTRYPOINT ["/bin/bash", "-c", "\
   java -jar agent.jar -url ${JENKINS_URL} -secret ${JENKINS_SECRET} -name ${AGENT_NAME:-agent} -webSocket -workDir /home/jenkins/agent \
 "]
 
-# -----------------------------
-# Default command (override in Jenkins agent config)
-# -----------------------------
-CMD ["ping", "localhost"]
+
