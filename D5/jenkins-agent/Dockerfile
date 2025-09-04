@@ -47,6 +47,7 @@ RUN curl -fsSL https://apt.releases.hashicorp.com/gpg | \
     apt-get update && apt-get install -y terraform && \
     rm -rf /var/lib/apt/lists/*
 
+
 # -----------------------------
 # Create Jenkins user + docker group
 # -----------------------------
@@ -66,9 +67,9 @@ CMD ["ping", "localhost"]
 # Entrypoint: download agent.jar & connect
 # Pass JENKINS_URL and JENKINS_SECRET when running container
 # -----------------------------
-ENTRYPOINT ["/bin/bash", "-c", "\
-  curl -sO ${JENKINS_URL}/jnlpJars/agent.jar && \
-  java -jar agent.jar -url ${JENKINS_URL} -secret ${JENKINS_SECRET} -name ${AGENT_NAME:-agent} -webSocket -workDir /home/jenkins/agent \
-"]
+# ENTRYPOINT ["/bin/bash", "-c", "\
+#   curl -sO ${JENKINS_URL}/jnlpJars/agent.jar && \
+#   java -jar agent.jar -url ${JENKINS_URL} -secret ${JENKINS_SECRET} -name ${AGENT_NAME:-agent} -webSocket -workDir /home/jenkins/agent \
+# "]
 
 

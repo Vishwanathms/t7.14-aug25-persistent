@@ -148,17 +148,17 @@ ERROR: Cannot connect to the Docker daemon at unix:///var/run/docker.sock. Is th
 
 Re-Create jenkins with below for linux machine
 ```
-docker run -d --name jenkins -p 8500:8080 -p 50000:50000 -v jenkins_home:/var/jenkins_home -v /var/run/docker.sock:/var/run/docker.sock  vishwacloudlab/jenkins:v1
+docker run -d --name jenkins -p 8500:8080 -p 50000:50000 -v jenkins_home:/var/jenkins_home -v /var/run/docker.sock:/var/run/docker.sock  vishwacloudlab/jenkins:v2
 
 ```
-* The above image has already pre-installed , git, docker manully . 
+* The above image has already pre-installed , git, docker , kubectl manully . 
 * Please make to enable the below option on docker desktop
 
 ![alt text](images/docker-tcp-2375-enable.png)
 
 * for windows docker desktop 
 ```
-docker run -d --name jenkins -p 8500:8080 -p 50000:50000 -v jenkins_home:/var/jenkins_home -e DOCKER_HOST=tcp://host.docker.internal:2375  vishwacloudlab/jenkins:v1
+docker run -d --name jenkins -p 8500:8080 -p 50000:50000 -v jenkins_home:/var/jenkins_home -e DOCKER_HOST=tcp://host.docker.internal:2375  vishwacloudlab/jenkins:v2
 ```
 
 
