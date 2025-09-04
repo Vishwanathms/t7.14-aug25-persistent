@@ -86,11 +86,11 @@ pipeline {
                     url: 'https://github.com/your-username/jenkins-docker-lab.git', credentialsId: 'your-jenkins-credential-id-for-github'
             }
         }
-        stage('Build Docker Image') {
+        stage('Clean up image and container') {
             steps {
                 script {
-                    sh 'docker rm  jenkins_app -f'
-                    sh 'docker image rmi $DOCKERHUB_USER/$IMAGE_NAME:latest'
+                    sh 'docker rm  jenkins_app -f || true'
+                    sh 'docker image rmi $DOCKERHUB_USER/$IMAGE_NAME:latest || true' 
                 }
             }              
         stage('Build Docker Image') {
