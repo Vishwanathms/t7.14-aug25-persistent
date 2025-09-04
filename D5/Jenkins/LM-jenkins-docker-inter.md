@@ -118,6 +118,26 @@ pipeline {
 }
 ```
 
+For error as below in the jenkins pipeline
+```
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Build Docker Image)
+[Pipeline] script
+[Pipeline] {
+[Pipeline] sh
++ docker build -t vishwacloudlab/jenkins-docker-lab:latest .
+ERROR: Cannot connect to the Docker daemon at unix:///var/run/docker.sock. Is the docker daemon running?
+```
+
+
+Re-Create jenkins with below 
+```
+docker run -d --name jenkins -p 8500:8080 -p 50000:50000 -v jenkins_home:/var/jenkins_home -v /var/run/docker.sock:/var/run/docker.sock  jenkins/jenkins:lts
+```
+
+
 ---
 
 ## **4. Jenkins Configuration**
