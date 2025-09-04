@@ -1,6 +1,6 @@
 FROM ubuntu:22.04
 
-LABEL maintainer="Your Name <your@email.com>"
+LABEL maintainer="Your Name vishwa"
 LABEL description="Jenkins Ubuntu Agent with Java, Git, Maven, Docker CLI, and Terraform"
 
 # -----------------------------
@@ -19,6 +19,10 @@ RUN apt-get update && apt-get install -y \
     unzip \
     wget \
     && rm -rf /var/lib/apt/lists/*
+
+RUN apt-get update && \
+    apt-get install -y iputils-ping && \
+    rm -rf /var/lib/apt/lists/*
 
 # -----------------------------
 # Install Docker CLI
@@ -55,6 +59,15 @@ USER jenkins
 WORKDIR /home/jenkins
 
 # -----------------------------
+# Entrypoint: download agent.jar & connect
+# Pass JENKINS_URL and JENKINS_SECRET when running container
+# -----------------------------
+ENTRYPOINT ["/bin/bash", "-c", "\
+  curl -sO ${JENKINS_URL}/jnlpJars/agent.jar && \
+  java -jar agent.jar -url ${JENKINS_URL} -secret ${JENKINS_SECRET} -name ${AGENT_NAME:-agent} -webSocket -workDir /home/jenkins/agent \
+"]
+
+# -----------------------------
 # Default command (override in Jenkins agent config)
 # -----------------------------
-CMD ["bash"]
+CMD ["ping", "localhost"]
