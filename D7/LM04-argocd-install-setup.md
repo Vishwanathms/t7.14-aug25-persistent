@@ -67,10 +67,17 @@ NAME            TYPE           CLUSTER-IP      EXTERNAL-IP   PORT(S)         AGE
 argocd-server   LoadBalancer   10.96.20.10     localhost     80:30080/TCP,443:30443/TCP   5m
 ```
 
+* If the above 
+
 💡 On Docker Desktop, the `EXTERNAL-IP` is always `localhost`.
 
 * Access Argo CD UI → **[https://localhost:30443](https://localhost:30443)**
 
+* If the output is blank, then run the below forwarding command on a seperate prompt.
+```
+kubectl port-forward svc/argocd-server -n argocd 8080:443
+```
+* Access Argo CD UI → **[http://localhost:8080](http://localhost:8080)**
 ---
 
 ## 5. Get Initial Admin Password
